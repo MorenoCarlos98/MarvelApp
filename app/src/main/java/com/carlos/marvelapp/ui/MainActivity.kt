@@ -2,14 +2,8 @@ package com.carlos.marvelapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
-import com.carlos.marvelapp.API.retrofitService
 import com.carlos.marvelapp.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 

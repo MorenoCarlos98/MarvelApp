@@ -1,4 +1,4 @@
-package com.carlos.marvelapp
+package com.carlos.marvelapp.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
