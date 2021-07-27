@@ -2,12 +2,28 @@ package com.carlos.marvelapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
+import com.carlos.marvelapp.adapters.CharacterAdapter
+import com.carlos.marvelapp.api.API
+import com.carlos.marvelapp.api.APIService
+import com.carlos.marvelapp.models.Characters
 import com.carlos.marvelapp.utils.constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var progressBar: ProgressBar
     //var AllSuperheroes = emptyList<Superheroe>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,11 +32,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //getSuperheroes()
+        recyclerView = findViewById(R.id.recyclerView)
+        progressBar = findViewById(R.id.progressBar)
+        progressBar.visibility = View.VISIBLE
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        getCharacters()
     }
 
-    //private fun getSuperheroes() {
-    //    CoroutineScope(Dispatchers.IO).launch {
+    private fun getCharacters() {
+        CoroutineScope(Dispatchers.IO).launch {
+            API.instance.getCharacters(constants.ts, constants.apikey, constants.hash)
+                .enqueue(object: Callback<Characters> {
+                    override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                        recyclerView.adapter = CharacterAdapter(response.body()!!.data.results, this@MainActivity)
+                        progressBar.visibility = View.GONE
+                    }
+
+                    override fun onFailure(call: Call<Characters>, t: Throwable) {
+                        progressBar.visibility = View.GONE
+                    }
+                })
             //val superheroes: Response<List<Superheroe>> = retrofitService.getCharacters()
             //if (superheroes.isSuccessful) {
             //    AllSuperheroes = superheroes.body() ?: emptyList()
@@ -29,8 +61,8 @@ class MainActivity : AppCompatActivity() {
             //} else {
             //    showError()
             //}
-    //    }
-    //}
+        }
+    }
 
     private fun showError() {
         runOnUiThread {

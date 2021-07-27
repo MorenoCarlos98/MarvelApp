@@ -5,7 +5,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object API {
-    private val instance: APIService
+
+    val instance: APIService
 
     init {
         val retrofit = Retrofit.Builder()
