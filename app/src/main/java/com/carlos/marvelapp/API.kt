@@ -13,7 +13,7 @@ object API {
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()).
-            build()
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 }
