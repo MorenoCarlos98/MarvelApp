@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.carlos.marvelapp.R
+import com.carlos.marvelapp.utils.constants
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_MarvelApp)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         //getSuperheroes()
     }
 
