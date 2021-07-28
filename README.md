@@ -12,15 +12,15 @@ Para el desarrollo de la aplicación he usado Kotlin y para poder hacer uso del 
 ### Explicación del funcionamiento:
 Antes de empezar a desarrollar la aplicación he tenido que añadir las dependencias:
 
-*Retrofit
+* Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     
-*Coroutinas
+* Coroutinas
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
     
-*CircleImageView
+* CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     
-*Glide
+* Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
