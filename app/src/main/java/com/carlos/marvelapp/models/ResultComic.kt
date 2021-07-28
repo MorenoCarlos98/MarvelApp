@@ -1,6 +1,6 @@
 package com.carlos.marvelapp.models
 
-data class ResultX(
+data class ResultComic(
     val characters: Characters,
     val collectedIssues: List<Any>,
     val collections: List<Any>,

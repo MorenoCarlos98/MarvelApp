@@ -10,11 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.models.Result
+import com.carlos.marvelapp.models.ResultCharacter
 import com.carlos.marvelapp.ui.MoreInfo
 import de.hdodenhof.circleimageview.CircleImageView
 
-class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter(val data: List<ResultCharacter>, val context: Context): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     //Creación de ViewHolder
     inner class CharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

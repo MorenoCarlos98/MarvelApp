@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.models.ResultXXXX
+import com.carlos.marvelapp.models.ResultEvent
 import de.hdodenhof.circleimageview.CircleImageView
 
-class EventAdapter (val data: List<ResultXXXX>, val context: Context): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter (val data: List<ResultEvent>, val context: Context): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     //Creación de ViewHolder
     inner class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

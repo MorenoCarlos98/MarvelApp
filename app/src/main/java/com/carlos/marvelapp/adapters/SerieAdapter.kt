@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.models.ResultXX
+import com.carlos.marvelapp.models.ResultSerie
 import de.hdodenhof.circleimageview.CircleImageView
 
-class SerieAdapter(val data: List<ResultXX>, val context: Context): RecyclerView.Adapter<SerieAdapter.SerieViewHolder>() {
+class SerieAdapter(val data: List<ResultSerie>, val context: Context): RecyclerView.Adapter<SerieAdapter.SerieViewHolder>() {
 
     //Creación de ViewHolder
     inner class SerieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

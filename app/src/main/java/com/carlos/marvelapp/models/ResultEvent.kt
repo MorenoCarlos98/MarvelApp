@@ -1,6 +1,6 @@
 package com.carlos.marvelapp.models
 
-data class ResultXXXX(
+data class ResultEvent(
     val characters: CharactersXXX,
     val comics: ComicsXXX,
     val creators: CreatorsXXX,

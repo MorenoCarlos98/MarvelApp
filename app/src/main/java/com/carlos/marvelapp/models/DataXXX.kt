@@ -4,6 +4,6 @@ data class DataXXX(
     val count: Int,
     val limit: Int,
     val offset: Int,
-    val results: List<ResultXXX>,
+    val results: List<ResultStory>,
     val total: Int
 )

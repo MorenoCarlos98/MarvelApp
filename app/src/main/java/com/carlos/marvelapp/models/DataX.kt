@@ -4,6 +4,6 @@ data class DataX(
     val count: Int,
     val limit: Int,
     val offset: Int,
-    val results: List<ResultX>,
+    val results: List<ResultComic>,
     val total: Int
 )

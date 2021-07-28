@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.models.ResultX
+import com.carlos.marvelapp.models.ResultComic
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
+class ComicAdapter(val data: List<ResultComic>, val context: Context): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
 
     //Creación de ViewHolder
     inner class ComicViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

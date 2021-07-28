@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.models.ResultXXX
+import com.carlos.marvelapp.models.ResultStory
 
-class StoryAdapter(val data: List<ResultXXX>): RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
+class StoryAdapter(val data: List<ResultStory>): RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
 
     //Creación de ViewHolder
     inner class StoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
