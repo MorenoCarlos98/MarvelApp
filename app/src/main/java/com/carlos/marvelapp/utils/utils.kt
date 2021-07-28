@@ -1,5 +1,6 @@
 package com.carlos.marvelapp.utils
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.widget.ProgressBar
@@ -49,9 +50,9 @@ class utils {
                     .enqueue(object : Callback<Comic> {
                         override fun onResponse(call: Call<Comic>, response: Response<Comic>) {
                             val results = response.body()!!.data.results
+                            progressBar.visibility = View.GONE
                             if (results.isNotEmpty()) {
-                                recyclerView.adapter = ComicAdapter(response.body()!!.data.results, context)
-                                progressBar.visibility = View.GONE
+                                recyclerView.adapter = ComicAdapter(results, context)
                             } else {
                                 Toast.makeText(context, "There are no comics for this character", Toast.LENGTH_LONG).show()
                             }
@@ -70,9 +71,9 @@ class utils {
                     .enqueue(object : Callback<Event> {
                         override fun onResponse(call: Call<Event>, response: Response<Event>) {
                             val results = response.body()!!.data.results
+                            progressBar.visibility = View.GONE
                             if (results.isNotEmpty()) {
                                 recyclerView.adapter = EventAdapter(results, context)
-                                progressBar.visibility = View.GONE
                             } else {
                                 Toast.makeText(context, "There are no events for this character", Toast.LENGTH_LONG).show()
                             }
@@ -91,9 +92,9 @@ class utils {
                     .enqueue(object : Callback<Serie> {
                         override fun onResponse(call: Call<Serie>, response: Response<Serie>) {
                             val results = response.body()!!.data.results
+                            progressBar.visibility = View.GONE
                             if (results.isNotEmpty()) {
                                 recyclerView.adapter = SerieAdapter(results, context)
-                                progressBar.visibility = View.GONE
                             } else {
                                 Toast.makeText(context, "There are no series for this character", Toast.LENGTH_LONG).show()
                             }
@@ -112,9 +113,9 @@ class utils {
                     .enqueue(object : Callback<Story> {
                         override fun onResponse(call: Call<Story>, response: Response<Story>) {
                             val results = response.body()!!.data.results
+                            progressBar.visibility = View.GONE
                             if (results.isNotEmpty()) {
                                 recyclerView.adapter = StoryAdapter(results, context)
-                                progressBar.visibility = View.GONE
                             } else {
                                 Toast.makeText(context, "There are no stories for this character", Toast.LENGTH_LONG).show()
                             }
