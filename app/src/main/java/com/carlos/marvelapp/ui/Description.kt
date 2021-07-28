@@ -7,24 +7,25 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.utils.utils
 
-class MainActivity : AppCompatActivity() {
+class Description : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar:ProgressBar
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Thread.sleep(1000)
-        setTheme(R.style.Theme_MarvelApp)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_description)
 
-        recyclerView = findViewById(R.id.recyclerView)
-        progressBar = findViewById(R.id.progressBar)
+        val bundle:Bundle? = intent.extras
+        val characterId = bundle?.get("characterId")
+        val option = bundle?.get("option")
+
+        recyclerView = findViewById(R.id.recyclerViewDescription)
+        progressBar = findViewById(R.id.progressBarDescription)
         progressBar.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        utils.getCharacters(recyclerView, progressBar, this)
+        //getComics()
     }
 }

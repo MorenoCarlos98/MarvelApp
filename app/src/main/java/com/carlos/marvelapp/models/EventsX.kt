@@ -1,8 +1,8 @@
 package com.carlos.marvelapp.models
 
-data class Characters(
+data class EventsX(
     val available: Int,
     val collectionURI: String,
-    val items: List<ItemXXXX>,
+    val items: List<ItemXXXXXX>,
     val returned: Int
 )

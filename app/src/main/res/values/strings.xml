@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MarvelApp</string>
-    <string name="nameCharacter">Name character</string>
+    <string name="name_character">Name character</string>
+    <string name="pick_option">Pick a option</string>
 </resources>
