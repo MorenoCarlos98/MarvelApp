@@ -37,7 +37,7 @@ class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.
     override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
 
         //Obtención de los datos que nos interesan de cada cómic
-        var comic = data[position]
+        val comic = data[position]
 
         //Añadimos el nombre al elemento name del layout item
         holder.comicName.text = comic.title

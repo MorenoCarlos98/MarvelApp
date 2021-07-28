@@ -1,6 +1,5 @@
 package com.carlos.marvelapp.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
 import com.carlos.marvelapp.models.ResultXXX
 
-class StoryAdapter (val data: List<ResultXXX>, val context: Context): RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
+class StoryAdapter(val data: List<ResultXXX>): RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
 
     //Creación de ViewHolder
     inner class StoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -32,7 +31,7 @@ class StoryAdapter (val data: List<ResultXXX>, val context: Context): RecyclerVi
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
 
         //Obtención de los datos que nos interesan de cada historia
-        var story = data[position]
+        val story = data[position]
 
         //Añadimos el nombre al elemento name del layout item
         holder.storyName.text = story.title

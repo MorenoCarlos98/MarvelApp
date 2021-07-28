@@ -2,7 +2,6 @@ package com.carlos.marvelapp.adapters
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -28,20 +27,18 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
             characterImage = itemView.findViewById(R.id.image)
 
             //Listener del item pulsado
-            itemView.setOnClickListener{ v: View ->
+            itemView.setOnClickListener{
 
                 //Creación del cuadro de diálogo
                 val builder = AlertDialog.Builder(context)
                 builder.setTitle(R.string.pick_option)
-                    .setItems(
-                        R.array.info_option,
-                        DialogInterface.OnClickListener { dialog, which ->
-                            val descriptionIntent = Intent(context, MoreInfo::class.java).apply{
-                                putExtra("option", which)
-                                putExtra("characterId", characterId)
-                            }
-                            context?.startActivity(descriptionIntent)
-                        })
+                    .setItems(R.array.info_option) { dialog, which ->
+                        val descriptionIntent = Intent(context, MoreInfo::class.java).apply {
+                            putExtra("option", which)
+                            putExtra("characterId", characterId)
+                        }
+                        context.startActivity(descriptionIntent)
+                    }
                 val dialog:AlertDialog = builder.create()
                 dialog.show()
             }
@@ -60,7 +57,7 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
 
         //Obtención de los datos que nos interesan de cada personaje
-        var character = data[position]
+        val character = data[position]
 
         holder.characterId = character.id.toString()
 

@@ -7,7 +7,7 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.utils.utils
+import com.carlos.marvelapp.utils.Utils
 
 class MoreInfo : AppCompatActivity() {
 
@@ -31,16 +31,16 @@ class MoreInfo : AppCompatActivity() {
         //Dependiendo de la opción escogida obtendremos diferentes datos
         when(option) {
             0 -> {
-                utils.getComics(characterId.toString(), recyclerView, progressBar, this)
+                Utils.getComics(characterId.toString(), recyclerView, progressBar, this)
             }
             1 -> {
-                utils.getEvents(characterId.toString(), recyclerView, progressBar, this)
+                Utils.getEvents(characterId.toString(), recyclerView, progressBar, this)
             }
             2 -> {
-                utils.getSeries(characterId.toString(), recyclerView, progressBar, this)
+                Utils.getSeries(characterId.toString(), recyclerView, progressBar, this)
             }
             3 -> {
-                utils.getStories(characterId.toString(), recyclerView, progressBar, this)
+                Utils.getStories(characterId.toString(), recyclerView, progressBar, this)
             }
         }
     }

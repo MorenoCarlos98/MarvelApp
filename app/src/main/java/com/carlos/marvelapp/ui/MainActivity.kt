@@ -7,7 +7,7 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.utils.utils
+import com.carlos.marvelapp.utils.Utils
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +33,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Llamamos a la obtención de los personajes
-        utils.getCharacters(recyclerView, progressBar, this)
+        Utils.getCharacters(recyclerView, progressBar, this)
     }
 }

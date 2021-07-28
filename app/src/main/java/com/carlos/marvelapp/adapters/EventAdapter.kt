@@ -37,7 +37,7 @@ class EventAdapter (val data: List<ResultXXXX>, val context: Context): RecyclerV
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
 
         //Obtención de los datos que nos interesan de cada evento
-        var event = data[position]
+        val event = data[position]
 
         //Añadimos el nombre al elemento name del layout item
         holder.eventName.text = event.title

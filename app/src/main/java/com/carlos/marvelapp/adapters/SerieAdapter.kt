@@ -37,7 +37,7 @@ class SerieAdapter(val data: List<ResultXX>, val context: Context): RecyclerView
     override fun onBindViewHolder(holder: SerieViewHolder, position: Int) {
 
         //Obtención de los datos que nos interesan de cada serie
-        var serie = data[position]
+        val serie = data[position]
 
         //Añadimos el nombre al elemento name del layout item
         holder.serieName.text = serie.title

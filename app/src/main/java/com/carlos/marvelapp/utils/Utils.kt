@@ -1,6 +1,5 @@
 package com.carlos.marvelapp.utils
 
-import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.widget.ProgressBar
@@ -16,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class utils {
+class Utils {
     companion object {
         //Credenciales para poder usar API:
 
@@ -115,7 +114,7 @@ class utils {
                             val results = response.body()!!.data.results
                             progressBar.visibility = View.GONE
                             if (results.isNotEmpty()) {
-                                recyclerView.adapter = StoryAdapter(results, context)
+                                recyclerView.adapter = StoryAdapter(results)
                             } else {
                                 Toast.makeText(context, "There are no stories for this character", Toast.LENGTH_LONG).show()
                             }

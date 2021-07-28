@@ -1,6 +1,6 @@
 package com.carlos.marvelapp.api
 
-import com.carlos.marvelapp.utils.utils.Companion.BASE_URL
+import com.carlos.marvelapp.utils.Utils.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
