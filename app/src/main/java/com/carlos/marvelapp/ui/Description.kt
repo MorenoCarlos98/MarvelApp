@@ -7,6 +7,7 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
+import com.carlos.marvelapp.utils.utils
 
 class Description : AppCompatActivity() {
 
@@ -18,14 +19,18 @@ class Description : AppCompatActivity() {
         setContentView(R.layout.activity_description)
 
         val bundle:Bundle? = intent.extras
-        val characterId = bundle?.get("characterId")
-        val option = bundle?.get("option")
+        val characterId = bundle?.getString("characterId")
+        val option = bundle?.getInt("option")
 
         recyclerView = findViewById(R.id.recyclerViewDescription)
         progressBar = findViewById(R.id.progressBarDescription)
         progressBar.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        //getComics()
+        when(option) {
+            0 -> {
+                utils.getComics(characterId.toString(), recyclerView, progressBar, this)
+            }
+        }
     }
 }

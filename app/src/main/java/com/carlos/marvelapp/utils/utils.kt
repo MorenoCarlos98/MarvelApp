@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.adapters.CharacterAdapter
+import com.carlos.marvelapp.adapters.ComicAdapter
 import com.carlos.marvelapp.api.API
 import com.carlos.marvelapp.models.Character
 import com.carlos.marvelapp.models.Comic
@@ -39,22 +40,20 @@ class utils {
         }
 
 
-        /*private fun getComics(recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
+        fun getComics(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
-                API.instance.getComics(utils.ts, utils.apikey, utils.hash)
+                API.instance.getComics(characterId, ts, apikey, hash)
                     .enqueue(object : Callback<Comic> {
-                        override fun onResponse(call: Call<Character>, response: Response<Comic>) {
-                            recyclerView.adapter =
-                                CharacterAdapter(response.body()!!.data.results, context)
+                        override fun onResponse(call: Call<Comic>, response: Response<Comic>) {
+                            recyclerView.adapter = ComicAdapter(response.body()!!.data.results, context)
                             progressBar.visibility = View.GONE
                         }
 
-                        override fun onFailure(call: Call<Character>, t: Throwable) {
+                        override fun onFailure(call: Call<Comic>, t: Throwable) {
                             progressBar.visibility = View.GONE
-                            //showError()
                         }
                     })
             }
-        }*/
+        }
     }
 }

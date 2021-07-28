@@ -8,19 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
-import com.carlos.marvelapp.models.Comics
-import com.carlos.marvelapp.models.Item
 import com.carlos.marvelapp.models.Result
 import com.carlos.marvelapp.ui.Description
 import de.hdodenhof.circleimageview.CircleImageView
 
-class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerView.Adapter<CharacterAdapter.CharactersViewHolder>() {
+class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
-    inner class CharactersViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class CharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         lateinit var characterId: String
         var characterName: TextView
         var characterImage: CircleImageView
@@ -47,16 +44,16 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.item_characters,
             parent,
             false
         )
-        return CharactersViewHolder(itemView)
+        return CharacterViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         var characters = data[position]
 
         holder.characterId = data[position].id.toString()
