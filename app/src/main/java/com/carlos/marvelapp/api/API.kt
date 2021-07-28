@@ -9,6 +9,8 @@ object API {
     val instance: APIService
 
     init {
+
+        //Construimos nuestro objeto para poder hacer uso del API mediante Retrofit
         val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

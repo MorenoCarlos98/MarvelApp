@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
 import com.carlos.marvelapp.models.Result
-import com.carlos.marvelapp.ui.Description
+import com.carlos.marvelapp.ui.MoreInfo
 import de.hdodenhof.circleimageview.CircleImageView
 
 class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
+    //Creación de ViewHolder
     inner class CharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         lateinit var characterId: String
         var characterName: TextView
@@ -26,13 +27,16 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
             characterName = itemView.findViewById(R.id.name)
             characterImage = itemView.findViewById(R.id.image)
 
+            //Listener del item pulsado
             itemView.setOnClickListener{ v: View ->
+
+                //Creación del cuadro de diálogo
                 val builder = AlertDialog.Builder(context)
                 builder.setTitle(R.string.pick_option)
                     .setItems(
                         R.array.info_option,
                         DialogInterface.OnClickListener { dialog, which ->
-                            val descriptionIntent = Intent(context, Description::class.java).apply{
+                            val descriptionIntent = Intent(context, MoreInfo::class.java).apply{
                                 putExtra("option", which)
                                 putExtra("characterId", characterId)
                             }
@@ -54,18 +58,23 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+
+        //Obtención de los datos que nos interesan de cada personaje
         var character = data[position]
 
-        holder.characterId = data[position].id.toString()
+        holder.characterId = character.id.toString()
 
+        //Añadimos el nombre al elemento name del layout item
         holder.characterName.text = character.name
 
         val image = "${character.thumbnail.path}/standard_amazing.jpg"
 
+        //Obtención de la imagen a través del enlace y la añadimos al elemento image del layout item
         Glide.with(context).load(image).into(holder.characterImage)
     }
 
     override fun getItemCount(): Int {
+        //Devuelve el número de elementos obtenidos
         return data.size
     }
 }

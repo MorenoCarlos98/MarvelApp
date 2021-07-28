@@ -12,6 +12,8 @@ import com.carlos.marvelapp.models.ResultX
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
+
+    //Creación de ViewHolder
     inner class ComicViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var comicName: TextView
         var comicImage: CircleImageView
@@ -33,16 +35,22 @@ class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
+
+        //Obtención de los datos que nos interesan de cada cómic
         var comic = data[position]
 
+        //Añadimos el nombre al elemento name del layout item
         holder.comicName.text = comic.title
 
         val image = "${comic.thumbnail.path}/standard_amazing.jpg"
 
+        //Obtención de la imagen a través del enlace y la añadimos al elemento image del layout item
         Glide.with(context).load(image).into(holder.comicImage)
     }
 
     override fun getItemCount(): Int {
+
+        //Devuelve el número de elementos obtenidos
         return data.size
     }
 }

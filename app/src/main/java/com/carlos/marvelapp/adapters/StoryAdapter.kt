@@ -10,6 +10,8 @@ import com.carlos.marvelapp.R
 import com.carlos.marvelapp.models.ResultXXX
 
 class StoryAdapter (val data: List<ResultXXX>, val context: Context): RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
+
+    //Creación de ViewHolder
     inner class StoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var storyName: TextView
 
@@ -28,12 +30,17 @@ class StoryAdapter (val data: List<ResultXXX>, val context: Context): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
+
+        //Obtención de los datos que nos interesan de cada historia
         var story = data[position]
 
+        //Añadimos el nombre al elemento name del layout item
         holder.storyName.text = story.title
     }
 
     override fun getItemCount(): Int {
+
+        //Devuelve el número de elementos obtenidos
         return data.size
     }
 }

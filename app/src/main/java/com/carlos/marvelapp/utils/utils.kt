@@ -17,10 +17,14 @@ import retrofit2.Response
 
 class utils {
     companion object {
+        //Credenciales para poder usar API:
+
         const val BASE_URL = "https://gateway.marvel.com"
         const val ts = "1"
         const val apikey:String = "dadded75ae894f33f3fd530f104ce724"
         const val hash:String = "2618ce007444e5a5699ebb24b4c4f95b"
+
+        //Funciones de la obtención de datos mediante API (se usa un hilo más para no sobrecargar al hilo principal de la app):
 
         fun getCharacters(recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
@@ -70,7 +74,7 @@ class utils {
                                 recyclerView.adapter = EventAdapter(results, context)
                                 progressBar.visibility = View.GONE
                             } else {
-                                Toast.makeText(context, "There are no stories for this character", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, "There are no events for this character", Toast.LENGTH_LONG).show()
                             }
                         }
 

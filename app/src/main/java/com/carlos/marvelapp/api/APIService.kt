@@ -7,6 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface APIService {
+    //Llamada a obtener todos los personajes
     @GET("/v1/public/characters")
     fun getCharacters(
         @Query("ts") ts: String,
@@ -14,6 +15,7 @@ interface APIService {
         @Query("hash")hash: String
     ) : Call<Character>
 
+    //Llamada a obtener los comics del personaje escogido
     @GET("/v1/public/characters/{characterId}/comics")
     fun getComics(
         @Path("characterId") characterId: String,
@@ -22,6 +24,7 @@ interface APIService {
         @Query("hash")hash: String
     ) : Call<Comic>
 
+    //Llamada a obtener las series del personaje escogido
     @GET("/v1/public/characters/{characterId}/series")
     fun getSeries(
         @Path("characterId") characterId: String,
@@ -30,6 +33,7 @@ interface APIService {
         @Query("hash")hash: String
     ) : Call<Serie>
 
+    //Llamada a obtener las historias del personaje escogido
     @GET("/v1/public/characters/{characterId}/stories")
     fun getStories(
         @Path("characterId") characterId: String,
@@ -38,6 +42,7 @@ interface APIService {
         @Query("hash")hash: String
     ) : Call<Story>
 
+    //Llamada a obtener los eventos del personaje escogido
     @GET("/v1/public/characters/{characterId}/events")
     fun getEvents(
         @Path("characterId") characterId: String,

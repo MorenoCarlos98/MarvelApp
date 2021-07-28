@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.carlos.marvelapp.R
 import com.carlos.marvelapp.utils.utils
 
-class Description : AppCompatActivity() {
+class MoreInfo : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
@@ -18,6 +18,7 @@ class Description : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_description)
 
+        //Obtenemos el Bundle para poder usar las variables que hemos pasado entre actividades
         val bundle:Bundle? = intent.extras
         val characterId = bundle?.getString("characterId")
         val option = bundle?.getInt("option")
@@ -27,6 +28,7 @@ class Description : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //Dependiendo de la opción escogida obtendremos diferentes datos
         when(option) {
             0 -> {
                 utils.getComics(characterId.toString(), recyclerView, progressBar, this)
