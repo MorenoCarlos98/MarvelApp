@@ -3,12 +3,11 @@ package com.carlos.marvelapp.utils
 import android.content.Context
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.carlos.marvelapp.adapters.CharacterAdapter
-import com.carlos.marvelapp.adapters.ComicAdapter
+import com.carlos.marvelapp.adapters.*
 import com.carlos.marvelapp.api.API
-import com.carlos.marvelapp.models.Character
-import com.carlos.marvelapp.models.Comic
+import com.carlos.marvelapp.models.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,11 +44,79 @@ class utils {
                 API.instance.getComics(characterId, ts, apikey, hash)
                     .enqueue(object : Callback<Comic> {
                         override fun onResponse(call: Call<Comic>, response: Response<Comic>) {
-                            recyclerView.adapter = ComicAdapter(response.body()!!.data.results, context)
-                            progressBar.visibility = View.GONE
+                            val results = response.body()!!.data.results
+                            if (results.isNotEmpty()) {
+                                recyclerView.adapter = ComicAdapter(response.body()!!.data.results, context)
+                                progressBar.visibility = View.GONE
+                            } else {
+                                Toast.makeText(context, "There are no comics for this character", Toast.LENGTH_LONG).show()
+                            }
                         }
 
                         override fun onFailure(call: Call<Comic>, t: Throwable) {
+                            progressBar.visibility = View.GONE
+                        }
+                    })
+            }
+        }
+
+        fun getEvents(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
+            CoroutineScope(Dispatchers.IO).launch {
+                API.instance.getEvents(characterId, ts, apikey, hash)
+                    .enqueue(object : Callback<Event> {
+                        override fun onResponse(call: Call<Event>, response: Response<Event>) {
+                            val results = response.body()!!.data.results
+                            if (results.isNotEmpty()) {
+                                recyclerView.adapter = EventAdapter(results, context)
+                                progressBar.visibility = View.GONE
+                            } else {
+                                Toast.makeText(context, "There are no stories for this character", Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Event>, t: Throwable) {
+                            progressBar.visibility = View.GONE
+                        }
+                    })
+            }
+        }
+
+        fun getSeries(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
+            CoroutineScope(Dispatchers.IO).launch {
+                API.instance.getSeries(characterId, ts, apikey, hash)
+                    .enqueue(object : Callback<Serie> {
+                        override fun onResponse(call: Call<Serie>, response: Response<Serie>) {
+                            val results = response.body()!!.data.results
+                            if (results.isNotEmpty()) {
+                                recyclerView.adapter = SerieAdapter(results, context)
+                                progressBar.visibility = View.GONE
+                            } else {
+                                Toast.makeText(context, "There are no series for this character", Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Serie>, t: Throwable) {
+                            progressBar.visibility = View.GONE
+                        }
+                    })
+            }
+        }
+
+        fun getStories(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
+            CoroutineScope(Dispatchers.IO).launch {
+                API.instance.getStories(characterId, ts, apikey, hash)
+                    .enqueue(object : Callback<Story> {
+                        override fun onResponse(call: Call<Story>, response: Response<Story>) {
+                            val results = response.body()!!.data.results
+                            if (results.isNotEmpty()) {
+                                recyclerView.adapter = StoryAdapter(results, context)
+                                progressBar.visibility = View.GONE
+                            } else {
+                                Toast.makeText(context, "There are no stories for this character", Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Story>, t: Throwable) {
                             progressBar.visibility = View.GONE
                         }
                     })

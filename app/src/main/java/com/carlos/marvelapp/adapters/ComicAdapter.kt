@@ -17,15 +17,15 @@ class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.
         var comicImage: CircleImageView
 
         init {
-            comicName = itemView.findViewById(R.id.characterName)
-            comicImage = itemView.findViewById(R.id.characterImage)
+            comicName = itemView.findViewById(R.id.name)
+            comicImage = itemView.findViewById(R.id.image)
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_characters,
+            R.layout.item,
             parent,
             false
         )
@@ -33,11 +33,11 @@ class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
-        var comics = data[position]
+        var comic = data[position]
 
-        holder.comicName.text = comics.title
+        holder.comicName.text = comic.title
 
-        val image = "${comics.thumbnail.path}/standard_amazing.jpg"
+        val image = "${comic.thumbnail.path}/standard_amazing.jpg"
 
         Glide.with(context).load(image).into(holder.comicImage)
     }

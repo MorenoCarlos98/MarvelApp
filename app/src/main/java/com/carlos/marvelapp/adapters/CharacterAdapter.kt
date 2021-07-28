@@ -23,8 +23,8 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
         var characterImage: CircleImageView
 
         init {
-            characterName = itemView.findViewById(R.id.characterName)
-            characterImage = itemView.findViewById(R.id.characterImage)
+            characterName = itemView.findViewById(R.id.name)
+            characterImage = itemView.findViewById(R.id.image)
 
             itemView.setOnClickListener{ v: View ->
                 val builder = AlertDialog.Builder(context)
@@ -46,7 +46,7 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_characters,
+            R.layout.item,
             parent,
             false
         )
@@ -54,13 +54,13 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        var characters = data[position]
+        var character = data[position]
 
         holder.characterId = data[position].id.toString()
 
-        holder.characterName.text = characters.name
+        holder.characterName.text = character.name
 
-        val image = "${characters.thumbnail.path}/standard_amazing.jpg"
+        val image = "${character.thumbnail.path}/standard_amazing.jpg"
 
         Glide.with(context).load(image).into(holder.characterImage)
     }

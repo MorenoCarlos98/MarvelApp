@@ -31,6 +31,15 @@ class Description : AppCompatActivity() {
             0 -> {
                 utils.getComics(characterId.toString(), recyclerView, progressBar, this)
             }
+            1 -> {
+                utils.getEvents(characterId.toString(), recyclerView, progressBar, this)
+            }
+            2 -> {
+                utils.getSeries(characterId.toString(), recyclerView, progressBar, this)
+            }
+            3 -> {
+                utils.getStories(characterId.toString(), recyclerView, progressBar, this)
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 <resources>
     <string-array name="info_option">
         <item>Comics</item>
+        <item>Events</item>
         <item>Series</item>
         <item>Stories</item>
     </string-array>

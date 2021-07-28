@@ -1,7 +1,6 @@
 package com.carlos.marvelapp.api
 
-import com.carlos.marvelapp.models.Character
-import com.carlos.marvelapp.models.Comic
+import com.carlos.marvelapp.models.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,4 +21,28 @@ interface APIService {
         @Query("apikey")apikey: String,
         @Query("hash")hash: String
     ) : Call<Comic>
+
+    @GET("/v1/public/characters/{characterId}/series")
+    fun getSeries(
+        @Path("characterId") characterId: String,
+        @Query("ts") ts: String,
+        @Query("apikey")apikey: String,
+        @Query("hash")hash: String
+    ) : Call<Serie>
+
+    @GET("/v1/public/characters/{characterId}/stories")
+    fun getStories(
+        @Path("characterId") characterId: String,
+        @Query("ts") ts: String,
+        @Query("apikey")apikey: String,
+        @Query("hash")hash: String
+    ) : Call<Story>
+
+    @GET("/v1/public/characters/{characterId}/events")
+    fun getEvents(
+        @Path("characterId") characterId: String,
+        @Query("ts") ts: String,
+        @Query("apikey")apikey: String,
+        @Query("hash")hash: String
+    ) : Call<Event>
 }
