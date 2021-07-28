@@ -1,5 +1,6 @@
 package com.carlos.marvelapp.adapters
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -17,11 +18,23 @@ class EventAdapter (val data: List<ResultXXXX>, val context: Context): RecyclerV
     inner class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var eventName: TextView
         var eventImage: CircleImageView
+        lateinit var eventDescription: String
 
         init {
             eventName = itemView.findViewById(R.id.name)
             eventImage = itemView.findViewById(R.id.image)
 
+            itemView.setOnClickListener{
+
+                //Creación del cuadro de diálogo
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("Description")
+                    .setMessage(eventDescription)
+                    .setCancelable(false)
+                    .setPositiveButton("OK", null)
+                val alert = builder.create()
+                alert.show()
+            }
         }
     }
 
@@ -38,6 +51,8 @@ class EventAdapter (val data: List<ResultXXXX>, val context: Context): RecyclerV
 
         //Obtención de los datos que nos interesan de cada evento
         val event = data[position]
+
+        holder.eventDescription = event.description
 
         //Añadimos el nombre al elemento name del layout item
         holder.eventName.text = event.title

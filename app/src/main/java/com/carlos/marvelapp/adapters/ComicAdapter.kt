@@ -1,5 +1,6 @@
 package com.carlos.marvelapp.adapters
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,17 +12,31 @@ import com.carlos.marvelapp.R
 import com.carlos.marvelapp.models.ResultX
 import de.hdodenhof.circleimageview.CircleImageView
 
+
 class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
 
     //Creación de ViewHolder
     inner class ComicViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var comicName: TextView
         var comicImage: CircleImageView
+        lateinit var comicDescription: String
 
         init {
             comicName = itemView.findViewById(R.id.name)
             comicImage = itemView.findViewById(R.id.image)
 
+            //Listener del item pulsado
+            itemView.setOnClickListener{
+
+                //Creación del cuadro de diálogo
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("Description")
+                    .setMessage(comicDescription)
+                    .setCancelable(false)
+                    .setPositiveButton("OK", null)
+                val alert = builder.create()
+                alert.show()
+            }
         }
     }
 
@@ -38,6 +53,8 @@ class ComicAdapter(val data: List<ResultX>, val context: Context): RecyclerView.
 
         //Obtención de los datos que nos interesan de cada cómic
         val comic = data[position]
+
+        holder.comicDescription = comic.description
 
         //Añadimos el nombre al elemento name del layout item
         holder.comicName.text = comic.title
