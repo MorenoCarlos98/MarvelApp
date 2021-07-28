@@ -3,6 +3,7 @@ package com.carlos.marvelapp.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.marvelapp.R
@@ -27,7 +28,6 @@ class CharacterAdapter(val data: List<Result>, val context: Context): RecyclerVi
         holder.characterName.text = characters.name
 
         val image = "${characters.thumbnail.path}/standard_amazing.jpg"
-
         Glide.with(context).load(image).into(holder.characterImage)
     }
 

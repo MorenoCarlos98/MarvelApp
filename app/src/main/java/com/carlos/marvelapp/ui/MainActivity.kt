@@ -23,7 +23,6 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ProgressBar
     //var AllSuperheroes = emptyList<Superheroe>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.recyclerView)
-        progressBar = findViewById(R.id.progressBar)
-        progressBar.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         getCharacters()
@@ -46,21 +43,12 @@ class MainActivity : AppCompatActivity() {
                 .enqueue(object: Callback<Characters> {
                     override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
                         recyclerView.adapter = CharacterAdapter(response.body()!!.data.results, this@MainActivity)
-                        progressBar.visibility = View.GONE
                     }
 
                     override fun onFailure(call: Call<Characters>, t: Throwable) {
-                        progressBar.visibility = View.GONE
+                        showError()
                     }
                 })
-            //val superheroes: Response<List<Superheroe>> = retrofitService.getCharacters()
-            //if (superheroes.isSuccessful) {
-            //    AllSuperheroes = superheroes.body() ?: emptyList()
-            //    val text = findViewById<TextView>(R.id.textView)
-            //    text.text = AllSuperheroes.get(0).name
-            //} else {
-            //    showError()
-            //}
         }
     }
 
