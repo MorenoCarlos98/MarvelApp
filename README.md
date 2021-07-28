@@ -13,7 +13,7 @@ Para el desarrollo de la aplicación he usado Kotlin y para poder hacer uso del 
 Antes de empezar a desarrollar la aplicación he tenido que añadir las dependencias:
 
 * Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    ´implementation 'com.squareup.retrofit2:retrofit:2.9.0'´
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     
 * Coroutinas
