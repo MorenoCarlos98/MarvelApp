@@ -5,7 +5,7 @@ Aplicación Android que muestra personajes de Marvel y nos proporciona informaci
 
 
 ### Diagrama:
-![Diagrama.jpeg](https://github.com/MorenoCarlos98/MarvelApp/blob/master/Diagrama.jpeg)
+![Diagrama.jpeg](https://github.com/MorenoCarlos98/MarvelApp/blob/master/Diagrama_MarvelApp.jpeg)
 
 
 ### Uso y funcionamiento:
