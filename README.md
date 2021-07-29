@@ -18,3 +18,5 @@ La aplicación accede a https://gateway.marvel.com/ haciendo peticiones GET depe
 Las imagenes mostradas se obtienen de la URL (thumbnail) y escribiendo que tamaño quería obtener; para obtenerlas y setearlas en el item imagen he usado Glide y para poder hacerla redondeada he usado CircleImageView.
 
 Si pulsamos sobre un personaje se nos abrirá un diálogo para seleccionar y ver en qué sitio aparece.
+
+Si pulsamos en un cómic o en un evento podemos ver la descripción de este elemento.
