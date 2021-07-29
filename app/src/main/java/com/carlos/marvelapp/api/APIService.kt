@@ -12,7 +12,8 @@ interface APIService {
     fun getCharacters(
         @Query("ts") ts: String,
         @Query("apikey")apikey: String,
-        @Query("hash")hash: String
+        @Query("hash")hash: String,
+        @Query("limit")limit:Int
     ) : Call<Character>
 
     //Llamada a obtener los comics del personaje escogido
@@ -21,7 +22,8 @@ interface APIService {
         @Path("characterId") characterId: String,
         @Query("ts") ts: String,
         @Query("apikey")apikey: String,
-        @Query("hash")hash: String
+        @Query("hash")hash: String,
+        @Query("limit")limit:Int
     ) : Call<Comic>
 
     //Llamada a obtener las series del personaje escogido
@@ -30,7 +32,8 @@ interface APIService {
         @Path("characterId") characterId: String,
         @Query("ts") ts: String,
         @Query("apikey")apikey: String,
-        @Query("hash")hash: String
+        @Query("hash")hash: String,
+        @Query("limit")limit:Int
     ) : Call<Serie>
 
     //Llamada a obtener las historias del personaje escogido
@@ -39,7 +42,8 @@ interface APIService {
         @Path("characterId") characterId: String,
         @Query("ts") ts: String,
         @Query("apikey")apikey: String,
-        @Query("hash")hash: String
+        @Query("hash")hash: String,
+        @Query("limit")limit:Int
     ) : Call<Story>
 
     //Llamada a obtener los eventos del personaje escogido
@@ -48,6 +52,7 @@ interface APIService {
         @Path("characterId") characterId: String,
         @Query("ts") ts: String,
         @Query("apikey")apikey: String,
-        @Query("hash")hash: String
+        @Query("hash")hash: String,
+        @Query("limit")limit:Int
     ) : Call<Event>
 }

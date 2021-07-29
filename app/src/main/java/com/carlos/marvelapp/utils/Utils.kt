@@ -28,7 +28,7 @@ class Utils {
 
         fun getCharacters(recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
-                API.instance.getCharacters(ts, apikey, hash)
+                API.instance.getCharacters(ts, apikey, hash, 100)
                     .enqueue(object: Callback<Character> {
                         override fun onResponse(call: Call<Character>, response: Response<Character>) {
                             recyclerView.adapter = CharacterAdapter(response.body()!!.data.results, context)
@@ -45,7 +45,7 @@ class Utils {
 
         fun getComics(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
-                API.instance.getComics(characterId, ts, apikey, hash)
+                API.instance.getComics(characterId, ts, apikey, hash, 100)
                     .enqueue(object : Callback<Comic> {
                         override fun onResponse(call: Call<Comic>, response: Response<Comic>) {
                             val results = response.body()!!.data.results
@@ -66,7 +66,7 @@ class Utils {
 
         fun getEvents(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
-                API.instance.getEvents(characterId, ts, apikey, hash)
+                API.instance.getEvents(characterId, ts, apikey, hash, 100)
                     .enqueue(object : Callback<Event> {
                         override fun onResponse(call: Call<Event>, response: Response<Event>) {
                             val results = response.body()!!.data.results
@@ -87,7 +87,7 @@ class Utils {
 
         fun getSeries(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
-                API.instance.getSeries(characterId, ts, apikey, hash)
+                API.instance.getSeries(characterId, ts, apikey, hash, 100)
                     .enqueue(object : Callback<Serie> {
                         override fun onResponse(call: Call<Serie>, response: Response<Serie>) {
                             val results = response.body()!!.data.results
@@ -108,7 +108,7 @@ class Utils {
 
         fun getStories(characterId: String, recyclerView: RecyclerView, progressBar: ProgressBar, context: Context) {
             CoroutineScope(Dispatchers.IO).launch {
-                API.instance.getStories(characterId, ts, apikey, hash)
+                API.instance.getStories(characterId, ts, apikey, hash, 100)
                     .enqueue(object : Callback<Story> {
                         override fun onResponse(call: Call<Story>, response: Response<Story>) {
                             val results = response.body()!!.data.results

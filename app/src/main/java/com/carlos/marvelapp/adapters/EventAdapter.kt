@@ -18,7 +18,7 @@ class EventAdapter (val data: List<ResultEvent>, val context: Context): Recycler
     inner class EventViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var eventName: TextView
         var eventImage: CircleImageView
-        lateinit var eventDescription: String
+        var eventDescription: String = ""
 
         init {
             eventName = itemView.findViewById(R.id.name)
@@ -52,7 +52,9 @@ class EventAdapter (val data: List<ResultEvent>, val context: Context): Recycler
         //Obtención de los datos que nos interesan de cada evento
         val event = data[position]
 
-        holder.eventDescription = event.description
+
+        val desc = event.description
+        if (desc != null) holder.eventDescription = desc
 
         //Añadimos el nombre al elemento name del layout item
         holder.eventName.text = event.title

@@ -19,7 +19,7 @@ class ComicAdapter(val data: List<ResultComic>, val context: Context): RecyclerV
     inner class ComicViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var comicName: TextView
         var comicImage: CircleImageView
-        lateinit var comicDescription: String
+        var comicDescription = ""
 
         init {
             comicName = itemView.findViewById(R.id.name)
@@ -54,7 +54,8 @@ class ComicAdapter(val data: List<ResultComic>, val context: Context): RecyclerV
         //Obtención de los datos que nos interesan de cada cómic
         val comic = data[position]
 
-        holder.comicDescription = comic.description
+        val desc = comic.description
+        if (desc != null) holder.comicDescription = desc
 
         //Añadimos el nombre al elemento name del layout item
         holder.comicName.text = comic.title
